@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PC | Rahayu Computer</title>
+
+<style>
+body{
+  font-family:Arial, sans-serif;
+  background:#f6f7f9;
+  margin:0;
+}
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+.filter-bar{
+  display:flex;
+  gap:8px;
+  margin-bottom:20px;
+}
+.filter-bar button{
+  padding:8px 12px;
+  border:1px solid #ccc;
+  background:#fff;
+  cursor:pointer;
+  border-radius:6px;
+}
+.filter-bar button.active{
+  background:#0f172a;
+  color:#fff;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+.card{
+  background:#fff;
+  padding:15px;
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,.1);
+}
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:contain;
+}
+.btn-wa{
+  display:inline-block;
+  margin-top:10px;
+  background:#25d366;
+  color:#fff;
+  padding:10px 14px;
+  text-decoration:none;
+  border-radius:6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- FILTER -->
+  <div class="filter-bar">
+    <button class="active" onclick="filterType('all',this)">Semua</button>
+    <button onclick="filterType('aio',this)">All In One</button>
+    <button onclick="filterType('tower',this)">PC Tower</button>
+    <button onclick="filterType('rakitan',this)">PC Rakitan</button>
+  </div>
+
+  <!-- PRODUK -->
+  <div class="grid">
+
+    <div class="card" data-type="aio">
+      <img src="img/pc/hp-aio.jpg">
+      <h3>HP All In One 22"</h3>
+      <p>Core i5 • RAM 8GB • SSD 512GB</p>
+      <a class="btn-wa"
