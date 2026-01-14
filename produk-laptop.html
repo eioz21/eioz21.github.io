@@ -5,14 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Laptop | Rahayu Computer</title>
 <link rel="icon" href="favicon.png">
+
 <style>
 body{font-family:Arial;background:#f6f7f9;margin:0}
 header,footer{background:#0f172a;color:#fff;padding:16px}
-.container{max-width:1100px;margin:auto;padding:20px}
-.card{background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.1)}
-.btn-wa{background:#25d366;color:#fff;padding:12px 18px;border-radius:6px;text-decoration:none;font-weight:bold}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px}
+.filter-bar button{
+  padding:8px 12px;border:none;border-radius:6px;
+  cursor:pointer;background:#e5e7eb;font-weight:bold
+}
+.filter-bar button.active{background:#0f172a;color:#fff}
+
+.search-box{
+  width:100%;padding:10px;border-radius:6px;border:1px solid #ccc;
+  margin-bottom:20px
+}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:#fff;border-radius:8px;padding:15px;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+.card img{width:100%;height:180px;object-fit:contain;margin-bottom:10px}
+
+.btn-wa{
+  background:#25d366;color:#fff;padding:10px 14px;
+  border-radius:6px;text-decoration:none;font-weight:bold;
+  display:inline-block
+}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -23,18 +45,54 @@ header,footer{background:#0f172a;color:#fff;padding:16px}
 </header>
 
 <div class="container">
-  <div class="card">
-    <h2>Laptop Core i5</h2>
-    <ul>
-      <li>Intel Core i5</li>
-      <li>RAM 8GB</li>
-      <li>SSD 512GB</li>
-    </ul>
-    <p><strong>Harga:</strong> Hubungi kami</p>
 
-    <a class="btn-wa" href="https://wa.me/6282227222485?text=Halo%20Rahayu%20Computer,%20saya%20ingin%20order%20Laptop" target="_blank">
-      📱 Order via WhatsApp
-    </a>
+  <!-- SEARCH -->
+  <input type="text" id="searchInput" class="search-box" placeholder="Cari laptop...">
+
+  <!-- FILTER MERK -->
+  <div class="filter-bar">
+    <button class="active" onclick="filterMerk('all',this)">Semua</button>
+    <button onclick="filterMerk('asus',this)">Asus</button>
+    <button onclick="filterMerk('acer',this)">Acer</button>
+    <button onclick="filterMerk('lenovo',this)">Lenovo</button>
+    <button onclick="filterMerk('hp',this)">HP</button>
+    <button onclick="filterMerk('msi',this)">MSI</button>
+    <button onclick="filterMerk('axioo',this)">Axioo</button>
+    <button onclick="filterMerk('advan',this)">Advan</button>
+    <button onclick="filterMerk('infinix',this)">Infinix</button>
+    <button onclick="filterMerk('zyrex',this)">Zyrex</button>
+  </div>
+
+  <!-- PRODUK -->
+  <div class="grid" id="productGrid">
+
+    <div class="card" data-merk="asus" data-nama="asus vivobook 14">
+      <img src="img/laptop/asus-vivobook-14.jpg">
+      <h3>Asus Vivobook 14</h3>
+      <p>Core i5 • RAM 8GB • SSD 512GB</p>
+      <a class="btn-wa" href="https://wa.me/6282227222485?text=Tanya%20Asus%20Vivobook%2014" target="_blank">
+        Order via WA
+      </a>
+    </div>
+
+    <div class="card" data-merk="acer" data-nama="acer aspire 3">
+      <img src="img/laptop/acer-aspire-3.jpg">
+      <h3>Acer Aspire 3</h3>
+      <p>Ryzen 5 • RAM 8GB • SSD 512GB</p>
+      <a class="btn-wa" href="https://wa.me/6282227222485?text=Tanya%20Acer%20Aspire%203" target="_blank">
+        Order via WA
+      </a>
+    </div>
+
+    <div class="card" data-merk="lenovo" data-nama="lenovo ideapad 3">
+      <img src="img/laptop/lenovo-ideapad-3.jpg">
+      <h3>Lenovo IdeaPad 3</h3>
+      <p>Core i3 • RAM 8GB • SSD 256GB</p>
+      <a class="btn-wa" href="https://wa.me/6282227222485?text=Tanya%20Lenovo%20Ideapad%203" target="_blank">
+        Order via WA
+      </a>
+    </div>
+
   </div>
 </div>
 
@@ -43,6 +101,27 @@ header,footer{background:#0f172a;color:#fff;padding:16px}
     <p>© 2026 Rahayu Computer</p>
   </div>
 </footer>
+
+<script>
+function filterMerk(merk, btn){
+  document.querySelectorAll('.filter-bar button')
+    .forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.card').forEach(card=>{
+    card.style.display =
+      (merk === 'all' || card.dataset.merk === merk)
+      ? 'block' : 'none';
+  });
+}
+
+document.getElementById('searchInput').addEventListener('keyup', function(){
+  let q = this.value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card=>{
+    card.style.display = card.dataset.nama.includes(q) ? 'block' : 'none';
+  });
+});
+</script>
 
 </body>
 </html>
