@@ -1,26 +1,34 @@
+<!-- FILTER -->
 <div class="filter-bar">
   <button class="active" onclick="filterType('all',this)">Semua</button>
   <button onclick="filterType('aio',this)">All In One</button>
   <button onclick="filterType('tower',this)">PC Tower</button>
   <button onclick="filterType('rakitan',this)">PC Rakitan</button>
 </div>
-<div class="card" data-type="aio">
-  <img src="img/pc/hp-aio.jpg">
-  <h3>HP All In One 22"</h3>
-  <p>Core i5 • RAM 8GB • SSD 512GB</p>
-  <a class="btn-wa" href="https://wa.me/6282227222485?text=Tanya%20HP%20AIO" target="_blank">
-    Order via WA
-  </a>
+
+<!-- PRODUK -->
+<div class="grid">
+
+  <div class="card" data-type="aio">
+    <img src="img/pc/hp-aio.jpg">
+    <h3>HP All In One 22"</h3>
+    <p>Core i5 • RAM 8GB • SSD 512GB</p>
+    <a class="btn-wa"
+       href="https://wa.me/6282227222485?text=Tanya%20HP%20AIO"
+       target="_blank">Order via WA</a>
+  </div>
+
+  <div class="card" data-type="rakitan">
+    <img src="img/pc/pc-rakitan-i5.jpg">
+    <h3>PC Rakitan Core i5</h3>
+    <p>RAM 16GB • SSD 1TB • GTX 1660</p>
+    <a class="btn-wa"
+       href="https://wa.me/6282227222485?text=Tanya%20PC%20Rakitan%20i5"
+       target="_blank">Order via WA</a>
+  </div>
+
 </div>
 
-<div class="card" data-type="rakitan">
-  <img src="img/pc/pc-rakitan-i5.jpg">
-  <h3>PC Rakitan Core i5</h3>
-  <p>RAM 16GB • SSD 1TB • GTX 1660</p>
-  <a class="btn-wa" href="https://wa.me/6282227222485?text=Tanya%20PC%20Rakitan%20i5" target="_blank">
-    Order via WA
-  </a>
-</div>
 <script>
 function filterType(type, btn){
   document.querySelectorAll('.filter-bar button')
